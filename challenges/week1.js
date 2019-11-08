@@ -1,18 +1,26 @@
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
-  // Add your code here!
+  // Makes the first letter upper.
+  // I think that even if the 1st letter is already upper it's possible no more expensive
+  // to just toUpper it rather than test for Uppercase before performing
+  return (word[0].toUpperCase() + word.slice(1, word.length));
 }
 
 function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
-  // Add your code here!
+  return (firstName[0].toUpperCase() + "." + lastName[0].toUpperCase());
 }
+
+
 
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  // Add your code here!
+
+  const withVAT = originalPrice + originalPrice * vatRate / 100;
+
+  return (Number.isInteger(withVAT) ? withVAT : Number(withVAT.toFixed(2)));
 }
 
 function getSalePrice(originalPrice, reduction) {
