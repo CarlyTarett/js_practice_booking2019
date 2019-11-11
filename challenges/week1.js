@@ -26,22 +26,42 @@ function addVAT(originalPrice, vatRate) {
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
-  // Add your code here!
+
+  const reducedPrice = originalPrice - originalPrice * reduction / 100;
+
+  return (Number.isInteger(reducedPrice) ? reducedPrice : Number(reducedPrice.toFixed(2)));
 }
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
-  // Add your code here!
+
+  if (str.length % 2) {
+
+    let midpoint = (str.length - 1) / 2
+    return str[midpoint]
+  }
+
+  else {
+    let half = str.length / 2
+    return str.slice(half - 1, half + 1)
+  }
 }
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
   // Add your code here!
+  let reversed = []
+  for (let letter of word) {
+    reversed.unshift(letter)
+  }
+  return reversed.join("")
 }
+
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Add your code here!
+
+  return( words.map(reverseWord) )
 }
 
 function countLinuxUsers(users) {
