@@ -61,22 +61,62 @@ function reverseWord(word) {
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
 
-  return( words.map(reverseWord) )
+  return (words.map(reverseWord))
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // Add your code here!
+
+  let linuxCount = 0
+
+  for (let user of users) {
+    if (user.type.includes("Linux")) {
+      linuxCount++
+    }
+  }
+  return linuxCount
 }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
   // Add your code here!
+  // scores is an array
+  // return a number
+
+  let sum = 0
+  if (scores.length === 0) {
+    return 0
+  }
+  else {
+    for (let number of scores) {
+      sum += number
+    }
+
+    let mean = sum / scores.length
+
+    return (Number.isInteger(mean) ? mean : Number(mean.toFixed(2)));
+  }
 }
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  // Add your code here!
+  let result = []
+
+  if(!(n%3)){
+   result.push("fizz")
+  }
+
+  if(!(n%5)){
+    result.push("buzz")
+  }
+
+  if(result.length === 0){
+    return n
+  }
+  else { 
+    return result.join("")
+  }
+
 }
 
 module.exports = {
