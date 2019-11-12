@@ -11,6 +11,7 @@ const {
   simpleFizzBuzz
 } = require("../challenges/week1");
 
+
 describe("capitalize", () => {
   test("returns a capitalized string", () => {
     expect(capitalize("hello")).toBe("Hello");
@@ -63,6 +64,11 @@ describe("getSalePrice", () => {
   test("reduces a price of 50 by 0%", () => {
     expect(getSalePrice(50, 0)).toBe(50);
   });
+  //extra one
+  test("reduces a price of 50 by 100%", () => {
+    expect(getSalePrice(50, 100)).toBe(0);
+  });
+
 });
 
 describe("getMiddleCharacter", () => {
@@ -72,6 +78,14 @@ describe("getMiddleCharacter", () => {
 
   test("returns the middle 2 characters from a string of even length", () => {
     expect(getMiddleCharacter("help!!")).toBe("lp");
+  });
+
+  //extra two
+  test("returns the character from a single character", () => {
+    expect(getMiddleCharacter("a")).toBe("a");
+  });
+  test("returns both characters from a string 2 characters long", () => {
+    expect(getMiddleCharacter("ab")).toBe("ab");
   });
 });
 
@@ -84,6 +98,9 @@ describe("reverseWord", () => {
     expect(reverseWord("why would you even want to do this?")).toBe(
       "?siht od ot tnaw neve uoy dluow yhw"
     );
+  });
+  test("Does nothing to a single letter", () => {
+    expect(reverseWord("k")).toBe("k");
   });
 });
 
@@ -122,17 +139,55 @@ describe("countLinuxUsers", () => {
     ];
     expect(countLinuxUsers(users)).toBe(5);
   });
+
+  //extra two tests 
+
+  test("returns the correct number of Linux users found case insensitive on linux", () => {
+    const users = [
+      { name: "Heather", OS: "Ubuntu 18.04", type: "linux" },
+      { name: "Paul", OS: "Ubuntu 16.04", type: "Linux" },
+      { name: "Sheila", OS: "Windows 10", type: "Windows" },
+      { name: "Jane", OS: "Mint 19.1", type: "linux" },
+      { name: "Jen", OS: "CentOS 7", type: "Linux" },
+      { name: "David", OS: "Fedora 28", type: "Linux" },
+      { name: "Pedro", OS: "Windows 95", type: "Windows" }
+    ];
+    expect(countLinuxUsers(users)).toBe(5);
+  });
+
+  test("returns the correct number of Linux users allow gaps in type", () => {
+    const users = [
+      { name: "Heather", OS: "Ubuntu 18.04", type: " linux" },
+      { name: "Paul", OS: "Ubuntu 16.04", type: "Linux" },
+      { name: "Sheila", OS: "Windows 10", type: "Windows" },
+      { name: "Jane", OS: "Mint 19.1", type: "linux" },
+      { name: "Jen", OS: "CentOS 7", type: " Linux" },
+      { name: "David", OS: "Fedora 28", type: "Linux" },
+      { name: "Pedro", OS: "Windows 95", type: "Windows" }
+    ];
+    expect(countLinuxUsers(users)).toBe(5);
+  });
+
 });
 
 describe("getMeanScore", () => {
   test("returns the mean score from an array of scores", () => {
     expect(getMeanScore([8, 9, 7])).toBe(8);
     expect(getMeanScore([88, 86, 93])).toBe(89);
+    // extra two
+    expect(getMeanScore([0, 0, 0])).toBe(0);
+    expect(getMeanScore([555])).toBe(555);
   });
 
   test("returns the mean to 2 decimal places", () => {
     expect(getMeanScore([24, 44, 56, 11, 12, 17, 34])).toBe(28.29);
   });
+
+  //extra test
+  test("Returns zero for an empty array", () => {
+    expect(getMeanScore([])).toBe(0);
+  });
+
 });
 
 describe("simpleFizzBuzz", () => {
@@ -150,5 +205,9 @@ describe("simpleFizzBuzz", () => {
 
   test("returns 'fizzbuzz' if the number is divisible by 3 and 5", () => {
     expect(simpleFizzBuzz(15)).toBe("fizzbuzz");
+  });
+  //extra one
+  test("returns zero for zero", () => {
+    expect(simpleFizzBuzz(0)).toBe(0);
   });
 });

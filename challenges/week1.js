@@ -1,42 +1,30 @@
 function capitalize(word) {
-  if (word === undefined) throw new Error("word is required");
-  // Makes the first letter upper.
-  // I think that even if the 1st letter is already upper it's possible no more expensive
-  // to just toUpper it rather than test for Uppercase before performing
-  return (word[0].toUpperCase() + word.slice(1, word.length));
+  if (word === undefined) throw new Error("word is required")
+  return (word[0].toUpperCase() + word.slice(1, word.length))
 }
 
 function generateInitials(firstName, lastName) {
-  if (firstName === undefined) throw new Error("firstName is required");
-  if (lastName === undefined) throw new Error("lastName is required");
-  return (firstName[0].toUpperCase() + "." + lastName[0].toUpperCase());
+  if (firstName === undefined) throw new Error("firstName is required")
+  if (lastName === undefined) throw new Error("lastName is required")
+  return (firstName[0].toUpperCase() + "." + lastName[0].toUpperCase())
 }
 
-
-
 function addVAT(originalPrice, vatRate) {
-  if (originalPrice === undefined) throw new Error("originalPrice is requied");
-  if (vatRate === undefined) throw new Error("vatRate is required");
-
-  const withVAT = originalPrice + originalPrice * vatRate / 100;
-
-  return (Number.isInteger(withVAT) ? withVAT : Number(withVAT.toFixed(2)));
+  if (originalPrice === undefined) throw new Error("originalPrice is requied")
+  if (vatRate === undefined) throw new Error("vatRate is required")
+  return roundIfNeeded(originalPrice + originalPrice * vatRate / 100)
 }
 
 function getSalePrice(originalPrice, reduction) {
-  if (originalPrice === undefined) throw new Error("originalPrice is required");
-  if (reduction === undefined) throw new Error("reduction is required");
-
-  const reducedPrice = originalPrice - originalPrice * reduction / 100;
-
-  return (Number.isInteger(reducedPrice) ? reducedPrice : Number(reducedPrice.toFixed(2)));
+  if (originalPrice === undefined) throw new Error("originalPrice is required")
+  if (reduction === undefined) throw new Error("reduction is required")
+  return roundIfNeeded(originalPrice - originalPrice * reduction / 100)
 }
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
 
   if (str.length % 2) {
-
     let midpoint = (str.length - 1) / 2
     return str[midpoint]
   }
@@ -48,7 +36,7 @@ function getMiddleCharacter(str) {
 }
 
 function reverseWord(word) {
-  if (word === undefined) throw new Error("word is required");
+  if (word === undefined) throw new Error("word is required")
   // Add your code here!
   let reversed = []
   for (let letter of word) {
@@ -57,20 +45,18 @@ function reverseWord(word) {
   return reversed.join("")
 }
 
-
 function reverseAllWords(words) {
-  if (words === undefined) throw new Error("words is required");
-
+  if (words === undefined) throw new Error("words is required")
   return (words.map(reverseWord))
 }
 
 function countLinuxUsers(users) {
-  if (users === undefined) throw new Error("users is required");
+  if (users === undefined) throw new Error("users is required")
 
   let linuxCount = 0
 
   for (let user of users) {
-    if (user.type.includes("Linux")) {
+    if (user.type.toLowerCase().includes("linux")) {
       linuxCount++
     }
   }
@@ -78,7 +64,7 @@ function countLinuxUsers(users) {
 }
 
 function getMeanScore(scores) {
-  if (scores === undefined) throw new Error("scores is required");
+  if (scores === undefined) throw new Error("scores is required")
   // Add your code here!
   // scores is an array
   // return a number
@@ -94,26 +80,35 @@ function getMeanScore(scores) {
 
     let mean = sum / scores.length
 
-    return (Number.isInteger(mean) ? mean : Number(mean.toFixed(2)));
+    return roundIfNeeded(mean)
   }
+}
+
+function roundIfNeeded(number){
+
+  return ( Number.isInteger(number) ? number : Number(number.toFixed(2)))
+
 }
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
   let result = []
 
-  if(!(n%3)){
-   result.push("fizz")
+  if(n===0)
+    return n
+
+  if (!(n % 3)) {
+    result.push("fizz")
   }
 
-  if(!(n%5)){
+  if (!(n % 5)) {
     result.push("buzz")
   }
 
-  if(result.length === 0){
+  if (result.length === 0) {
     return n
   }
-  else { 
+  else {
     return result.join("")
   }
 
