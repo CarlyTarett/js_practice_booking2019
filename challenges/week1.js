@@ -92,26 +92,26 @@ function roundIfNeeded(number){
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
+  
+  
   let result = []
 
-  if(n===0)
+  if(n===0){
     return n
+  }
+
+  if(!(n %15)){
+    return "fizzbuzz"
+  }
 
   if (!(n % 3)) {
-    result.push("fizz")
+    return "fizz"
   }
 
   if (!(n % 5)) {
-    result.push("buzz")
+    return "buzz"
   }
-
-  if (result.length === 0) {
     return n
-  }
-  else {
-    return result.join("")
-  }
-
 }
 
 module.exports = {
