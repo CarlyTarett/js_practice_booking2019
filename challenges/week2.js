@@ -1,26 +1,55 @@
 function getFillings(sandwich) {
   if (sandwich === undefined) throw new Error("ingredients is required");
-  // Your code here!
+
+  return sandwich.fillings
 }
 
 function isFromManchester(person) {
   if (person === undefined) throw new Error("person is required");
-  // Your code here!
+
+  return (person.city.toLowerCase() === "manchester")
 }
 
 function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+
+  const busCapacity = 40
+
+  let extras = people % busCapacity
+
+  if (extras === 0) {
+    return people / busCapacity
+  }
+  else {
+    return ((people - extras) / busCapacity) + 1
+  }
 }
 
+
+
 function countSheep(arr) {
-  if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+
+  let sheepCount = 0
+
+  for (let animal of arr) {
+    if (animal === "sheep") {
+      sheepCount++
+    }
+    else { }
+  }
+
+  return sheepCount
 }
+
+
 
 function hasMPostCode(person) {
   if (person === undefined) throw new Error("person is required");
-  // Your code here!
+
+  // if I had more time I'd like to abstract out  function that isFromManchester and the second
+  // part of this conditional could share - I'm a bit pushed this week
+  return (person.address.postCode[0] && (person.address.city.toLowerCase() === "manchester"))
+
 }
 
 module.exports = {
