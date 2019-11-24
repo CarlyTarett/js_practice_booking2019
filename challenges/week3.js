@@ -72,6 +72,40 @@ function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   // Your code here!
+  
+  let checkedNumbers = [];
+  let duplicates = [];
+
+  for (let number of arr1) 
+  
+ 
+    if (numberPresent(number, checkedNumbers)) { }
+ 
+    else {
+      checkedNumbers.push(number);
+      if (numberPresent(number, arr2))
+        duplicates.push(number);
+    }
+
+     // duplicates.push(number);
+
+      console.log(numberPresent(3, [2,4,5,3]));
+    
+
+  return duplicates;
+}
+
+function numberPresent(numberToCheck, array) {
+  for (let number of array) {
+    if (number === numberToCheck) {
+
+      return true;
+    }
+    else {}
+
+    
+  }
+  return false;
 }
 
 module.exports = {
