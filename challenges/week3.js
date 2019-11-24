@@ -71,28 +71,22 @@ function checkIngredients(menu, ingredient) {
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  // Your code here!
-  
+
   let checkedNumbers = [];
   let duplicates = [];
 
-  for (let number of arr1) 
-  
- 
+  for (let number of arr1)
+
+
     if (numberPresent(number, checkedNumbers)) { }
- 
+
     else {
       checkedNumbers.push(number);
       if (numberPresent(number, arr2))
         duplicates.push(number);
     }
 
-     // duplicates.push(number);
-
-      console.log(numberPresent(3, [2,4,5,3]));
-    
-
-  return duplicates;
+  return duplicates.sort(sortNumbers);
 }
 
 function numberPresent(numberToCheck, array) {
@@ -101,11 +95,14 @@ function numberPresent(numberToCheck, array) {
 
       return true;
     }
-    else {}
+    else { }
 
-    
   }
   return false;
+}
+
+function sortNumbers(a, b) {
+  return a > b ? 1 : b > a ? -1 : 0;
 }
 
 module.exports = {
