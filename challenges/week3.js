@@ -1,9 +1,9 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
 
-  let squaresArray = nums.map(function(number){
+  let squaresArray = nums.map(function (number) {
 
-    return number*number;
+    return number * number;
 
   });
 
@@ -14,10 +14,10 @@ function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
 
   let wordsArray = words.map(function (word, i) {
-    if (i != 0) {
+    if (i !== 0) {
       return capitalize(word);
     }
-    else{
+    else {
       return word;
     }
 
@@ -34,13 +34,38 @@ function capitalize(word) {
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+  let numberSubjectsArray = people.map(function (person) {
+    return person.subjects.length
+
+  });
+
+  let sum = 0;
+  for (let number of numberSubjectsArray) {
+    sum += number
+  }
+
+  return sum;
+
 }
 
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  // Your code here!
+
+  let ingredientPresent = false;
+  menu.forEach(function (recipe) {
+
+    recipe.ingredients.forEach(function (singleIngredient) {
+
+      if (singleIngredient === ingredient)
+        ingredientPresent = true;
+
+    });
+
+  });
+
+  return ingredientPresent;
+
 }
 
 function duplicateNumbers(arr1, arr2) {
