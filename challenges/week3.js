@@ -1,12 +1,18 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  // Your code here!
+
+  let squaresArray = nums.map(function(number){
+
+    return number*number;
+
+  });
+
+  return squaresArray;
 }
 
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Your code here!
-  // receives an array of words, camelcase them and return one string
+
   let wordsArray = words.map(function (word, i) {
     if (i != 0) {
       return capitalize(word);
