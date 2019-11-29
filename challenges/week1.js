@@ -1,3 +1,7 @@
+const commonFuncs = require('./commonFuncs');
+//let val = commonFuncs.roundIfNeeded(number); // val is "Hello"  
+
+
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required")
   return (word[0].toUpperCase() + word.slice(1, word.length))
@@ -12,13 +16,13 @@ function generateInitials(firstName, lastName) {
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied")
   if (vatRate === undefined) throw new Error("vatRate is required")
-  return roundIfNeeded(originalPrice + originalPrice * vatRate / 100)
+  return commonFuncs.roundIfNeeded(originalPrice + originalPrice * vatRate / 100)
 }
 
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required")
   if (reduction === undefined) throw new Error("reduction is required")
-  return roundIfNeeded(originalPrice - originalPrice * reduction / 100)
+  return commonFuncs.roundIfNeeded(originalPrice - originalPrice * reduction / 100)
 }
 
 function getMiddleCharacter(str) {
@@ -80,15 +84,15 @@ function getMeanScore(scores) {
 
     let mean = sum / scores.length
 
-    return roundIfNeeded(mean)
+    return commonFuncs.roundIfNeeded(mean)
   }
 }
 
-function roundIfNeeded(number){
+// function roundIfNeeded(number){
 
-  return ( Number.isInteger(number) ? number : Number(number.toFixed(2)))
+//   return ( Number.isInteger(number) ? number : Number(number.toFixed(2)))
 
-}
+// }
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
