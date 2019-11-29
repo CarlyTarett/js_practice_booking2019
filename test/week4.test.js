@@ -31,7 +31,7 @@ describe("findNamesBeginningWith", () => {
   });
 });
 
-xdescribe("findVerbs", () => {
+describe("findVerbs", () => {
   test("returns an array of words that are considered verbs (because they begin with 'to ')", () => {
     const words = [
       "to eat",
