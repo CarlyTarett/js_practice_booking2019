@@ -1,6 +1,4 @@
 const commonFuncs = require('./commonFuncs');
-//let val = commonFuncs.roundIfNeeded(number); // val is "Hello"  
-
 
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required")
@@ -96,15 +94,15 @@ function getMeanScore(scores) {
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  
-  
+
+
   let result = []
 
-  if(n===0){
+  if (n === 0) {
     return n
   }
 
-  if(!(n %15)){
+  if (!(n % 15)) {
     return "fizzbuzz"
   }
 
@@ -115,7 +113,7 @@ function simpleFizzBuzz(n) {
   if (!(n % 5)) {
     return "buzz"
   }
-    return n
+  return n
 }
 
 module.exports = {

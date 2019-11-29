@@ -40,7 +40,7 @@ function getSquareRoots(nums) {
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  // Your code here
+  return (sentences.filter(sentence => sentence.toLowerCase().includes(str.toLowerCase())));
 }
 
 function getLongestSides(triangles) {
