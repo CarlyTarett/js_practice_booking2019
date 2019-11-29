@@ -1,28 +1,27 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
 
-  return(nums.filter(num => num < 1));
+  return (nums.filter(num => num < 1));
 
 }
 
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
- 
-  return(names.filter(name => name.startsWith(char)));
+
+  return (names.filter(name => name.startsWith(char)));
 
 }
 
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
-
-  return(words.filter(word => word.startsWith('to ')));
+  return (words.filter(word => word.startsWith('to ')));
 
 }
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  return (nums.filter(num => Number.isInteger(num)));
 }
 
 function getCities(users) {
