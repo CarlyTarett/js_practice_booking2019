@@ -1,3 +1,7 @@
+const commonFuncs = require('./commonFuncs');
+
+
+
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
 
@@ -86,7 +90,7 @@ function duplicateNumbers(arr1, arr2) {
         duplicates.push(number);
     }
 
-  return duplicates.sort(sortNumbers);
+  return duplicates.sort(commonFuncs.sortNumbers);
 }
 
 function numberPresent(numberToCheck, array) {
@@ -99,10 +103,6 @@ function numberPresent(numberToCheck, array) {
 
   }
   return false;
-}
-
-function sortNumbers(a, b) {
-  return a > b ? 1 : b > a ? -1 : 0;
 }
 
 module.exports = {
