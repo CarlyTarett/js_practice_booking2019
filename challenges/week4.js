@@ -48,13 +48,10 @@ function getLongestSides(triangles) {
 
   let largestSides = [];
 
-  for(let triangle of triangles){
+  for (let triangle of triangles) {
 
-
-   largestSides.push(Math.max(triangle));
-   console.log(Math.max(triangle));
-
-   
+      let sorted = triangle.sort(commonFuncs.sortNumbers);
+     largestSides.push(sorted[sorted.length - 1]);
   }
 
   return largestSides;
