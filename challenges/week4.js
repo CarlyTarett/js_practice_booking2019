@@ -1,3 +1,5 @@
+const commonFuncs = require('./commonFuncs');
+
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
 
@@ -32,7 +34,7 @@ function getCities(users) {
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  return (nums.map(num => Math.sqrt(num)));
+  return ((nums.map(num => commonFuncs.roundIfNeeded(Math.sqrt(num)))));
 }
 
 function findSentencesContaining(sentences, str) {
