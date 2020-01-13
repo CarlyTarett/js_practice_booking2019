@@ -54,7 +54,6 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  // Your code here!
   let total = 0;
 
   for (let i = 0; i < arrs.length; i++)
@@ -68,18 +67,71 @@ const sumArrays = arrs => {
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+
+  return arr.map(function (number, index) {
+    let lastIndex = arr.length - 1;
+
+    if (index === 0) {
+      return arr[lastIndex];
+    }
+
+    else if (index === lastIndex)
+      return arr[0];
+
+    else
+      return arr[index];
+  });
+
 };
 
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  // Your code here!
+
+  let found = false;
+
+  for (const stick in haystack) {
+
+    let value = haystack[stick].toString().toLowerCase();
+
+    if (value.includes(searchTerm.toLowerCase()))
+      return true;
+  }
+
+  return false;
+
 };
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  
+  let array = str.split(" ");
+
+  let already = [];
+
+  let pairs = {};
+
+  let counter = 0;
+
+  for (inputWord of array) {
+    let word = inputWord.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g, "");
+    
+    if (!already.includes(word)){
+
+      already.push(word)
+      counter = 0;
+
+      for (member of array) {
+        let lowerMember = member.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g, "");
+        if (word === lowerMember)
+          counter = counter + 1;
+      }
+
+      pairs[word] = counter;
+    }
+  }
+  return pairs;
+
 };
 
 module.exports = {
