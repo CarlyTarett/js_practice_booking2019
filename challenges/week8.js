@@ -35,14 +35,21 @@ const count1sand0s = str => {
     1: oneCount,
     0: zeroCount
   };
-
-
-
 };
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  // Your code here!
+  // Your cnode here!
+  let myString = n.toString();
+  let stringLength = myString.length;
+
+  var reverse = 0;
+
+  for (let i = 1; i <= stringLength; i++) {
+    reverse = reverse + myString[stringLength - i];
+  }
+
+  return Number.parseInt(reverse);
 };
 
 const sumArrays = arrs => {

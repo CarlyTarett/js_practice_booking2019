@@ -50,7 +50,7 @@ describe.only("count1sand0s", () => {
       0: 1
     });
   });
-});
+});   
 
 describe.only("reverseNumber", () => {
   test("reverses the digits of a number", () => {
@@ -61,7 +61,7 @@ describe.only("reverseNumber", () => {
   });
 });
 
-describe("sumArrays", () => {
+describe.only("sumArrays", () => {
   test("returns the total of the numbers in all sub arrays", () => {
     const arrs = [[1, 2, 3], [6, 3, 1], [1], [9, 10], [3, 5]];
     expect(sumArrays(arrs)).toBe(44);
