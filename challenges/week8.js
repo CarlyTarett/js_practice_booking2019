@@ -3,17 +3,41 @@ const findNextNumber = (nums, n) => {
   if (n === undefined) throw new Error("n is required");
 
   const posn = nums.indexOf(n);
-  if (posn === -1 || posn === nums.length) {
+  if (posn === -1 || posn === (nums.length - 1)) {
     return null;
   }
   else {
-    return nums[n + 1];
+    return nums[posn + 1];
   }
 };
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
   // Your code here!
+  // iterate trhough from 0 to length - 1
+  // if its a 1 inc 1count if 0 then 0count
+  let oneCount = 0;
+  let zeroCount = 0;
+
+  for (let i = 0; i < str.length; i++) {
+
+    if (str[i] == 0) {
+      zeroCount++;
+    }
+
+    if (str[i] == 1) {
+      oneCount++;
+    }
+
+  }
+
+  return {
+    1: oneCount,
+    0: zeroCount
+  };
+
+
+
 };
 
 const reverseNumber = n => {
