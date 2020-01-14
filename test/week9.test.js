@@ -5,16 +5,21 @@ const {
 describe("sumMultiples", () => {
   test("sums all multiples of 3 or 5 from the array", () => {
     expect(sumMultiples([5, 3, 7, 8, 1])).toBe(8);
-    expect(sumMultiples([5, 3, 7, 8, 1, 10])).toBe(10);
-    expect(sumMultiples([2, 10, 30, 301, 23, 40, 50])).toBe(654);
+    expect(sumMultiples([5, 3, 7, 8, 1, 10])).toBe(18);
+    expect(sumMultiples([2, 10, 30, 301, 23, 40, 50])).toBe(130);
   });
 
   test("if the numbers not found in the array, returns zero", () => {
-    expect(sumMultiples([ 4, 7, 8, 1, 10], 55)).toBe(0);
+    expect(sumMultiples([ 4, 7, 8, 1, 4])).toBe(0);
   });
 
   test("handles zeros in the array", () => {
-    expect(sumMultiples([ 0, 7, 8, 1, 0], 55)).toBe(0);
+    expect(sumMultiples([ 0, 7, 8, 1, 0])).toBe(0);
+    expect(sumMultiples([ 0, 3, 8, 1, 0])).toBe(3);
+  });
+
+  test("if array empty returns 0", () => {
+    expect(sumMultiples([ ])).toBe(0);
   });
 
 });
