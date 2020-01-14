@@ -52,8 +52,35 @@ const isValidDNA = str => {
  * @param {String} str
  * @returns {String}
  */
+//T always pairs with A, and C always pairs with G
+
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+
+  let complement = [];
+
+  for (let i = 0; i < str.length; i++) {
+    let letter = '';
+    switch (str[i]) {
+
+      case 'A': letter = 'T';
+                break;
+      case 'C': letter = 'G';
+                break;
+      case 'G': letter = 'C';
+                break;
+      case 'T': letter = 'A';
+                break;
+      default:  throw new Error("valid str is required");
+    }
+
+   complement.push(letter);
+  }
+
+  // IF T A etc x 4
+
+  return complement.join("");
+
 };
 
 /**

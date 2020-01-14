@@ -1,6 +1,7 @@
 const {
   sumMultiples,
-  isValidDNA
+  isValidDNA,
+  getComplementaryDNA
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -48,6 +49,17 @@ describe("isValidDNA", () => {
 
   });
 });
+
+describe("getComplementaryDNA", () => {
+  test("gets correct complementary string", () => {
+    expect(getComplementaryDNA("A")).toBe("T");
+    expect(getComplementaryDNA("C")).toBe("G");
+    expect(getComplementaryDNA("ACTG")).toBe("TGAC");
+  });
+
+});
+
+
 
 // describe("count1sand0s", () => {
 //   test("returns an object with the count of 1s and 0s in a string", () => {
