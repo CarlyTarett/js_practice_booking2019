@@ -93,6 +93,7 @@ function getMeanScore(scores) {
 // }
 
 function simpleFizzBuzz(n) {
+
   if (n === undefined) throw new Error("n is required");
 
 

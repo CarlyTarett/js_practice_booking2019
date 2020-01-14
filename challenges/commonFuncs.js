@@ -3,7 +3,6 @@ exports.roundIfNeeded = function(number) {
 
   }
 
-
-  exports.sortNumbers = function(a, b) {
+exports.sortNumbers = function(a, b) {
    return a > b ? 1 : b > a ? -1 : 0;
  }
