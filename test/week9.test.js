@@ -1,5 +1,6 @@
 const {
-  sumMultiples
+  sumMultiples,
+  isValidDNA
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -22,6 +23,30 @@ describe("sumMultiples", () => {
     expect(sumMultiples([ ])).toBe(0);
   });
 
+});
+
+describe("isValidDNA", () => {
+  test("returns true for valid strings", () => {
+    expect(isValidDNA("CCGGTTAA")).toBe(true);
+    expect(isValidDNA("C")).toBe(true);
+    expect(isValidDNA("AGTTGATCCGGTTAA")).toBe(true);
+
+  });
+  test("returns false for invalid string", () => {
+    expect(isValidDNA("CCGGFTTAA")).toBe(false);
+    expect(isValidDNA("HJJJEKSLI")).toBe(false);
+    expect(isValidDNA("ASASASASASASSA")).toBe(false);
+
+  });
+  test("returns false for empty string", () => {
+    expect(isValidDNA("")).toBe(false);
+  });
+
+  test("case sensitive", () => {
+    expect(isValidDNA("cc")).toBe(false);
+    expect(isValidDNA("ccCGAT")).toBe(false);
+
+  });
 });
 
 // describe("count1sand0s", () => {
