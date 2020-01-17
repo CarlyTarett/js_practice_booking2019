@@ -32,13 +32,13 @@ const isValidDNA = str => {
 
       case 'A':
       case 'C':
-      case 'G': 
+      case 'G':
       case 'T': valid = true;
-                break;
+        break;
       default: valid = false;
     }
 
-    if(!valid)
+    if (!valid)
       break;
   }
 
@@ -52,7 +52,6 @@ const isValidDNA = str => {
  * @param {String} str
  * @returns {String}
  */
-//T always pairs with A, and C always pairs with G
 
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
@@ -64,32 +63,51 @@ const getComplementaryDNA = str => {
     switch (str[i]) {
 
       case 'A': letter = 'T';
-                break;
+        break;
       case 'C': letter = 'G';
-                break;
+        break;
       case 'G': letter = 'C';
-                break;
+        break;
       case 'T': letter = 'A';
-                break;
-      default:  throw new Error("valid str is required");
+        break;
+      default: throw new Error("valid str is required");
     }
 
-   complement.push(letter);
+    complement.push(letter);
   }
-
-  // IF T A etc x 4
 
   return complement.join("");
 
 };
 
 /**
- * This function should receive a number and return true/false depending on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
+ * This function should receive a number and return true/false dependi0ng on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)
  * @param {Number} n
  * @returns {Boolean}
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+
+  if (n === 1) {
+    return true;
+  }
+  else if (n < 0 || !(Number.isInteger(n))) {
+    return false;
+  }
+
+  let root = Math.sqrt(n);
+
+  if (Number.isInteger(root))
+    return false;
+
+  for (let i = 2; i < root; i++) {
+
+    if (Number.isInteger(n / i)) {
+      return false;
+    }
+  }
+
+  return true;
 };
 
 /**

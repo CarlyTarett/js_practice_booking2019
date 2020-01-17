@@ -1,7 +1,8 @@
 const {
   sumMultiples,
   isValidDNA,
-  getComplementaryDNA
+  getComplementaryDNA,
+  isItPrime
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -61,29 +62,32 @@ describe("getComplementaryDNA", () => {
 
 
 
-// describe("count1sand0s", () => {
-//   test("returns an object with the count of 1s and 0s in a string", () => {
-//     expect(count1sand0s("11000")).toEqual({
-//       1: 2,
-//       0: 3
-//     });
+describe.only("isItPrime", () => {
+  test("return true if a number is prime", () => {
+    expect(isItPrime(7)).toEqual(true);
+    expect(isItPrime(31)).toEqual(true);
+    expect(isItPrime(199)).toEqual(true);
+  });
 
-//     expect(count1sand0s("0101010111")).toEqual({
-//       1: 6,
-//       0: 4
-//     });
+  test("return false if a number is not prime", () => {
+    expect(isItPrime(40)).toEqual(false);
+    expect(isItPrime(63)).toEqual(false);
+    expect(isItPrime(10000)).toEqual(false);
+  });
 
-//     expect(count1sand0s("1111111")).toEqual({
-//       1: 7,
-//       0: 0
-//     });
-
-//     expect(count1sand0s("0111")).toEqual({
-//       1: 3,
-//       0: 1
-//     });
-//   });
-// });   
+  test("returns true for 1", () => {
+    expect(isItPrime(1)).toEqual(true);
+  });
+  test("returns false for 0", () => {
+    expect(isItPrime(0)).toEqual(false);
+  });
+  test("returns false for negative numbers", () => {
+    expect(isItPrime(-4)).toEqual(false);
+  });
+  test("returns false for decimals", () => {
+    expect(isItPrime(36.36)).toEqual(false);
+  });
+});   
 
 // describe("reverseNumber", () => {
 //   test("reverses the digits of a number", () => {
