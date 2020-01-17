@@ -2,7 +2,8 @@ const {
   sumMultiples,
   isValidDNA,
   getComplementaryDNA,
-  isItPrime
+  isItPrime,
+  createMatrix
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -62,7 +63,7 @@ describe("getComplementaryDNA", () => {
 
 
 
-describe.only("isItPrime", () => {
+describe("isItPrime", () => {
   test("return true if a number is prime", () => {
     expect(isItPrime(7)).toEqual(true);
     expect(isItPrime(31)).toEqual(true);
@@ -89,14 +90,45 @@ describe.only("isItPrime", () => {
   });
 });   
 
-// describe("reverseNumber", () => {
-//   test("reverses the digits of a number", () => {
-//     expect(reverseNumber(5)).toBe(5);
-//     expect(reverseNumber(104)).toBe(401);
-//     expect(reverseNumber(12345)).toBe(54321);
-//     expect(reverseNumber(100)).toBe(1); // No leading 0 necessary
-//   });
-// });
+
+describe.only("createMatrix", () => {
+  test("create an array containing n by n arrays filled with fill", () => {
+    expect(createMatrix(3, "foo")).toEqual( [
+     ["foo", "foo", "foo"],
+     ["foo", "foo", "foo"],
+     ["foo", "foo", "foo"]  
+    ]);
+
+    expect(createMatrix(1, "Bert")).toEqual( [
+      ["Bert"]
+     ]);
+  });
+
+  test("For 0 return an empty array", () => {
+    expect(createMatrix(0, "Monte Carlo")).toEqual( []);
+  });
+
+  test("Fill can be a number", () => {
+    expect(createMatrix(3, 3)).toEqual( [
+      [3, 3, 3],
+      [3, 3, 3],
+      [3, 3, 3]
+    ]);
+  });
+
+  test("Fill can be a boolean", () => {
+    expect(createMatrix(3, true)).toEqual( [
+      [true, true, true],
+      [true, true, true],
+      [true, true, true]
+    ]);
+  });
+});
+
+
+
+
+
 
 // describe("sumArrays", () => {
 //   test("returns the total of the numbers in all sub arrays", () => {
@@ -105,12 +137,7 @@ describe.only("isItPrime", () => {
 //   });
 // });
 
-// describe("arrShift", () => {
-//   test("returns an array with the first and last items swapped", () => {
-//     expect(arrShift([1, 2])).toEqual([2, 1]);
-//     expect(arrShift([1, 2, 3])).toEqual([3, 2, 1]);
-//     expect(arrShift([1, 2, 3, 4])).toEqual([4, 2, 3, 1]);
-//   });
+
 
 //   test("makes no difference when the array length is < 2", () => {
 //     expect(arrShift([1])).toEqual([1]);
