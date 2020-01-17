@@ -3,7 +3,8 @@ const {
   isValidDNA,
   getComplementaryDNA,
   isItPrime,
-  createMatrix
+  createMatrix,
+  areWeCovered
 } = require("../challenges/week9");
 
 describe("sumMultiples", () => {
@@ -14,16 +15,16 @@ describe("sumMultiples", () => {
   });
 
   test("if the numbers not found in the array, returns zero", () => {
-    expect(sumMultiples([ 4, 7, 8, 1, 4])).toBe(0);
+    expect(sumMultiples([4, 7, 8, 1, 4])).toBe(0);
   });
 
   test("handles zeros in the array", () => {
-    expect(sumMultiples([ 0, 7, 8, 1, 0])).toBe(0);
-    expect(sumMultiples([ 0, 3, 8, 1, 0])).toBe(3);
+    expect(sumMultiples([0, 7, 8, 1, 0])).toBe(0);
+    expect(sumMultiples([0, 3, 8, 1, 0])).toBe(3);
   });
 
   test("if array empty returns 0", () => {
-    expect(sumMultiples([ ])).toBe(0);
+    expect(sumMultiples([])).toBe(0);
   });
 
 });
@@ -61,8 +62,6 @@ describe("getComplementaryDNA", () => {
 
 });
 
-
-
 describe("isItPrime", () => {
   test("return true if a number is prime", () => {
     expect(isItPrime(7)).toEqual(true);
@@ -88,28 +87,28 @@ describe("isItPrime", () => {
   test("returns false for decimals", () => {
     expect(isItPrime(36.36)).toEqual(false);
   });
-});   
+});
 
 
-describe.only("createMatrix", () => {
+describe("createMatrix", () => {
   test("create an array containing n by n arrays filled with fill", () => {
-    expect(createMatrix(3, "foo")).toEqual( [
-     ["foo", "foo", "foo"],
-     ["foo", "foo", "foo"],
-     ["foo", "foo", "foo"]  
+    expect(createMatrix(3, "foo")).toEqual([
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"],
+      ["foo", "foo", "foo"]
     ]);
 
-    expect(createMatrix(1, "Bert")).toEqual( [
+    expect(createMatrix(1, "Bert")).toEqual([
       ["Bert"]
-     ]);
+    ]);
   });
 
   test("For 0 return an empty array", () => {
-    expect(createMatrix(0, "Monte Carlo")).toEqual( []);
+    expect(createMatrix(0, "Monte Carlo")).toEqual([]);
   });
 
   test("Fill can be a number", () => {
-    expect(createMatrix(3, 3)).toEqual( [
+    expect(createMatrix(3, 3)).toEqual([
       [3, 3, 3],
       [3, 3, 3],
       [3, 3, 3]
@@ -117,7 +116,7 @@ describe.only("createMatrix", () => {
   });
 
   test("Fill can be a boolean", () => {
-    expect(createMatrix(3, true)).toEqual( [
+    expect(createMatrix(3, true)).toEqual([
       [true, true, true],
       [true, true, true],
       [true, true, true]
@@ -125,121 +124,31 @@ describe.only("createMatrix", () => {
   });
 });
 
+describe("areWeCovered", () => {
+  const staff =
+    [
+      { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+      { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+      { name: "Rachel", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+      { name: "Diane", rota: ["Sunday", "Tuesday", "Friday"] },
+      { name: "Sarah Connor", rota: ["Saturday", "Friday"] },
+      { name: "Tyler Durden", rota: ["Thursday", "Thursday", "Thursday"] }
 
+    ]
+  test("Returns true if 3 people scheduled for given day", () => {
+    expect(areWeCovered(staff, "Sunday")).toEqual(true);
+  });
+  test("Returns false if fewer than 3 people scheduled for given day", () => {
+    expect(areWeCovered(staff, "Monday")).toEqual(false);
+  });
+  test("Returns true if more than 3 people scheduled for given day", () => {
+    expect(areWeCovered(staff, "Tuesday")).toEqual(true);
+  });
+  test("Works for full name staff members", () => {
+    expect(areWeCovered(staff, "Friday")).toEqual(true);
+  });  
+  test("Returns false if only > 3 because of duplicate in s/o's rota", () => {
+    expect(areWeCovered(staff, "Thursday")).toEqual(false);
+  });  
 
-
-
-
-// describe("sumArrays", () => {
-//   test("returns the total of the numbers in all sub arrays", () => {
-//     const arrs = [[1, 2, 3], [6, 3, 1], [1], [9, 10], [3, 5]];
-//     expect(sumArrays(arrs)).toBe(44);
-//   });
-// });
-
-
-
-//   test("makes no difference when the array length is < 2", () => {
-//     expect(arrShift([1])).toEqual([1]);
-//     expect(arrShift([])).toEqual([]);
-//   });
-// });
-
-// describe("findNeedle", () => {
-//   test("returns true if any of the properties of an object contain the specified string", () => {
-//     const obj1 = {
-//       name: "LINNMON",
-//       description: "Small round table",
-//       price: 31.89,
-//       store: "Warrington",
-//       code: 12872
-//     };
-//     expect(findNeedle(obj1, "table")).toBe(true);
-
-//     // Note that the objects provided to the function could have any keys/values
-//     const obj2 = {
-//       product_name: "Sparkle n Shine Dishwasher Tablets",
-//       price: 1.99,
-//       location: "Hulme",
-//       discounted: false,
-//       available: true
-//     };
-//     expect(findNeedle(obj2, "Dishwasher")).toBe(true);
-//   });
-
-//   test("returns false if none of the properties of an object contain the specified string", () => {
-//     const obj1 = {
-//       name: "LINNMON",
-//       description: "Small round table",
-//       price: 31.89,
-//       store: "Warrington",
-//       code: 12872
-//     };
-//     expect(findNeedle(obj1, "chair")).toBe(false);
-
-//     // Note that the objects provided to the function could have any keys/values
-//     const obj2 = {
-//       product_name: "Sparkle n Shine Dishwasher Tablets",
-//       price: 1.99,
-//       location: "Hulme",
-//       discounted: false,
-//       available: true
-//     };
-//     expect(findNeedle(obj2, "Carpet Cleaner")).toBe(false);
-//   });
-
-//   test("The search string should not be case sensitive", () => {
-//     const obj1 = {
-//       name: "LINNMON",
-//       description: "Small round table",
-//       price: 31.89,
-//       store: "Warrington",
-//       code: 12872
-//     };
-
-//     expect(findNeedle(obj1, "warrington")).toBe(true);
-//     expect(findNeedle(obj1, "linnmon")).toBe(true);
-//     expect(findNeedle(obj1, "Liverpool")).toBe(false);
-//   });
-// });
-
-// describe("getWordFrequencies", () => {
-//   test("returns the frequencies of each word in a string", () => {
-//     expect(getWordFrequencies("hello world")).toEqual({
-//       hello: 1,
-//       world: 1
-//     });
-
-//     expect(getWordFrequencies("the cat is hairier than the rat")).toEqual({
-//       the: 2,
-//       cat: 1,
-//       is: 1,
-//       hairier: 1,
-//       than: 1,
-//       rat: 1
-//     });
-
-//     expect(getWordFrequencies("hello hello hello")).toEqual({
-//       hello: 3
-//     });
-//   });
-
-//   test("ignores capitalisation", () => {
-//     expect(getWordFrequencies("Hello hello hello")).toEqual({
-//       hello: 3
-//     });
-//   });
-
-//   test("ignores punctuation", () => {
-//     // Hint: Google "JavaScript remove special characters from string" to get some ideas!
-//     expect(
-//       getWordFrequencies("Hello, hello hello! What have we here?")
-//     ).toEqual({
-//       hello: 3,
-//       what: 1,
-//       have: 1,
-//       we: 1,
-//       here: 1
-//     });
-//   });
-// });
+});

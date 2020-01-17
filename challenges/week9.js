@@ -43,8 +43,6 @@ const isValidDNA = str => {
   }
 
   return valid;
-
-
 };
 
 /**
@@ -75,9 +73,7 @@ const getComplementaryDNA = str => {
 
     complement.push(letter);
   }
-
   return complement.join("");
-
 };
 
 /**
@@ -133,8 +129,8 @@ const createMatrix = (n, fill) => {
       for (let j = 1; j<=n; j++){
           singleArr.push(fill);
       }
+
     matrix.push(singleArr)
- 
   }
 
   return matrix;
@@ -155,6 +151,17 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  const MIN_STAFF = 3;
+  let dayCount = 0;
+
+  for(staffMember of staff){
+
+
+    if((staffMember.rota).includes(day))
+        dayCount = dayCount +1;
+  }
+
+  return (dayCount >= MIN_STAFF);
 };
 
 module.exports = {
