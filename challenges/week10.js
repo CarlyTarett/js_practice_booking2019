@@ -4,6 +4,25 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+
+  let total = 0;
+  let multiplier = 1;
+  let s = "";
+
+  if (n < 0) {
+
+    s = ((n.toString()).split("-"))[1];
+    multiplier = -1;
+  }
+  else {
+    s = n.toString();
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    total += parseInt(s[i])
+  }
+
+  return (total * multiplier);
 };
 
 /**
