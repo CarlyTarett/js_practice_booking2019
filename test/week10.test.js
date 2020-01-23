@@ -1,6 +1,7 @@
 const {
   sumDigits,
-  createRange
+  createRange,
+  getScreentimeAlertList
 } = require("../challenges/week10");
 
 describe("sumDigits", () => {
@@ -37,6 +38,46 @@ describe.only("createRange", () => {
     expect(createRange(1,5,3)).toEqual( [1,4]);
     expect(createRange(101,400,100)).toEqual( [101, 201, 301]);
   });
-
-
 });
+
+
+describe.only("getScreentimeAlertList", () => {
+
+  const userData = [{
+    username: "beth_1234",
+    name: "Beth Smith",
+    screenTime: [
+                 { date: "2019-05-01", usage: { twitter: 34, instagram: 22, facebook: 40} },
+                 { date: "2019-05-02", usage: { twitter: 56, instagram: 40, facebook: 31} },
+                 { date: "2019-05-03", usage: { twitter: 12, instagram: 15, facebook: 19} },
+                 { date: "2019-05-04", usage: { twitter: 10, instagram: 56, facebook: 61} },
+                ]
+   },
+   {
+    username: "sam_j_1989",
+    name: "Sam Jones",
+    screenTime: [
+                 { date: "2019-05-02", usage: { mapMyRun: 45, whatsApp: 100, facebook: 0, safari: 10} },
+                 { date: "2019-06-11", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 10} },
+                 { date: "2019-06-13", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 16} },
+                 { date: "2019-06-14", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 31} },
+                 { date: "2020-01-01", usage: { mapMyRun: 0, whatsApp: 0, facebook: 0, safari: 100} },
+
+                ]
+   } ]
+  
+  test("Return array of users whose online time > 100", () => {
+    expect(getScreentimeAlertList(userData, "2019-05-04")).toEqual( ["beth_1234"]);
+    expect(getScreentimeAlertList(userData, "2019-05-02")).toEqual( ["beth_1234", "sam_j_1989"]);
+  });
+
+  test("Do not return if === 100 mins", () => {
+    expect(getScreentimeAlertList(userData, "2020-01-01")).toEqual( []);
+   
+  });
+
+  test("Return empty array if no data avail for that date", () => {
+    expect(getScreentimeAlertList(userData, "2025-01-01")).toEqual( []); 
+  });
+});
+

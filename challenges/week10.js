@@ -84,6 +84,33 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
+  const MAX_RECOMMENDED_MINS = 100;
+
+
+  let alertList = [];
+
+  for (let f = 0; f < users.length; f++) {
+    let userInfo = users[f];
+    let username = userInfo.username;
+    let screenTime = userInfo.screenTime;
+
+    for (let g = 0; g < screenTime.length; g++) {
+      let entry = screenTime[g];
+      if (entry.date === date) {
+        let usage = entry.usage;
+
+        const minutesArr = Object.values(usage);
+
+        if (minutesArr.reduce((a, b) => a + b, 0) > MAX_RECOMMENDED_MINS) {
+
+          alertList.push(username);
+        }
+      }
+    }
+  }
+
+  return alertList;
 };
 
 /**
