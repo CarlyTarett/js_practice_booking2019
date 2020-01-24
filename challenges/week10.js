@@ -87,7 +87,6 @@ const getScreentimeAlertList = (users, date) => {
 
   const MAX_RECOMMENDED_MINS = 100;
 
-
   let alertList = [];
 
   for (let f = 0; f < users.length; f++) {
@@ -125,6 +124,15 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+  if(hexStr[0]!== '#') throw new Error("incorrect format of argument")
+
+  let R = parseInt((hexStr.substring(1,3)), 16);
+let G = parseInt((hexStr.substring(3,5)), 16);
+let B = parseInt((hexStr.substring(4,6)), 16);
+console.log("rgb(" + R +"," +G +"," +B +")");
+
+parseInt("FF", 16)
+  
 };
 
 /**

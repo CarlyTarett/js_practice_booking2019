@@ -1,7 +1,8 @@
 const {
   sumDigits,
   createRange,
-  getScreentimeAlertList
+  getScreentimeAlertList,
+  hexToRGB
 } = require("../challenges/week10");
 
 describe("sumDigits", () => {
@@ -41,7 +42,7 @@ describe.only("createRange", () => {
 });
 
 
-describe.only("getScreentimeAlertList", () => {
+describe("getScreentimeAlertList", () => {
 
   const userData = [{
     username: "beth_1234",
@@ -79,5 +80,13 @@ describe.only("getScreentimeAlertList", () => {
   test("Return empty array if no data avail for that date", () => {
     expect(getScreentimeAlertList(userData, "2025-01-01")).toEqual( []); 
   });
+});
+
+
+describe.only("hexToRGB", () => {
+  test("converts hex color code to RGB", () => {
+    expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)");
+  });
+
 });
 
