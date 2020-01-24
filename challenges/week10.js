@@ -147,30 +147,33 @@ const findWinner = board => {
 
   let winner = false;
   let round = 0;
-
-for(let i = 0; i< 3; i++){
-  console.log("between");
-  round = 0;
-  for (let j = 0; j< 3; j++){
-
-    if(round === 0)
   
-    console.log(i +" " +j);
-    round++;
-
+  for(let i = 0; i< 3; i++){
+    console.log("between");
+    round = 0;
+    for (let j = 0; j< 3; j++){
+  
+      checkEntry(i,j);
+  
+    }
+    round = 0;
+    console.log("between")
+    for (let j = 0; j< 3; j++){
+        
+      checkEntry(j,i);
+  
+    }
   }
-  round = 0;
-   console.log("between")
-  for (let j = 0; j< 3; j++){
-      
-  if(round === 0)
-  console.log(j +" " +i);
-  round ++;
-
+  
+  function checkEntry(x,y){
+  
+      if(round === 0)
+      console.log(x +" " +y);
+      console.log(" ");
+      console.log(x + "        " +y);
+      round++;
+  
   }
-}
-
-
 
 };
 
