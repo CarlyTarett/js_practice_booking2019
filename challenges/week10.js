@@ -119,20 +119,17 @@ const getScreentimeAlertList = (users, date) => {
  * Colours can also be represented in RGB format, using decimal notation.
  * This function should transform the hex code into an RGB code in the format:
  * "rgb(255,17,51)"
- * Hint: You will need to convert each hexadecimal value for R, G and B into its decimal equivalent!
  * @param {String} str
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
-  if(hexStr[0]!== '#') throw new Error("incorrect format of argument")
+  if (hexStr[0] !== '#') throw new Error("incorrect format of argument")
 
-  let R = parseInt((hexStr.substring(1,3)), 16);
-let G = parseInt((hexStr.substring(3,5)), 16);
-let B = parseInt((hexStr.substring(4,6)), 16);
-console.log("rgb(" + R +"," +G +"," +B +")");
+  let R = parseInt((hexStr.substring(1, 3)), 16);
+  let G = parseInt((hexStr.substring(3, 5)), 16);
+  let B = parseInt((hexStr.substring(5, 7)), 16);
 
-parseInt("FF", 16)
-  
+  return ("rgb(" + R + "," + G + "," + B + ")")
 };
 
 /**
@@ -147,6 +144,34 @@ parseInt("FF", 16)
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+
+  let winner = false;
+  let round = 0;
+
+for(let i = 0; i< 3; i++){
+  console.log("between");
+  round = 0;
+  for (let j = 0; j< 3; j++){
+
+    if(round === 0)
+  
+    console.log(i +" " +j);
+    round++;
+
+  }
+  round = 0;
+   console.log("between")
+  for (let j = 0; j< 3; j++){
+      
+  if(round === 0)
+  console.log(j +" " +i);
+  round ++;
+
+  }
+}
+
+
+
 };
 
 module.exports = {
