@@ -168,6 +168,12 @@ const findWinner = board => {
     for(let j = 0; j<3; j++){
       checkEntry(j,j);
     }
+
+    round = 0;
+    console.log("between");
+    for(let j = 0, k = 2; j< 3; j++, k--){
+      checkEntry(j,k);
+    }
   }
   
   function checkEntry(x,y){
