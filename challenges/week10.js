@@ -151,50 +151,47 @@ const findWinner = board => {
   let winner = false;
 
   for (let i = 0; i < BOARD_SIZE; i++) {
-// for left to right lines
+    // for left to right lines
     round = 0;
     for (let j = 0; j < 3; j++) {
       checkEntry(i, j);
     }
-    if(winner && startMark != null && round === BOARD_SIZE) return startMark;
+    if (winner && startMark != null && round === BOARD_SIZE) return startMark;
 
-// for top down lines
+    // for top down lines
     round = 0;
     for (let j = 0; j < BOARD_SIZE; j++) {
-     checkEntry(j,i);
+      checkEntry(j, i);
     }
-    if(winner && startMark != null && round === BOARD_SIZE) return startMark;
+    if (winner && startMark != null && round === BOARD_SIZE) return startMark;
 
-// for top left to bottom right diagonal
+    // for top left to bottom right diagonal
     round = 0;
     for (let j = 0; i === 0 && j < BOARD_SIZE; j++) {
       checkEntry(j, j);
     }
-    if(winner && startMark != null && round === BOARD_SIZE) return startMark;
+    if (winner && startMark != null && round === BOARD_SIZE) return startMark;
 
- //   for bottom left to top right diagonal
-      round = 0;
-        for (let j = 0, k = (BOARD_SIZE - 1); i === 0 &&  j < BOARD_SIZE; j++ , k--) {
-          checkEntry(j, k);
+    //   for bottom left to top right diagonal
+    round = 0;
+    for (let j = 0, k = (BOARD_SIZE - 1); i === 0 && j < BOARD_SIZE; j++ , k--) {
+      checkEntry(j, k);
 
-          if(winner && startMark != null && round === BOARD_SIZE) return startMark;
-        }
+      if (winner && startMark != null && round === BOARD_SIZE) return startMark;
+    }
   }
 
   return null;
 
-  function checkEntry(x,y){
+  function checkEntry(x, y) {
 
-    if(round === 0) {
-      if(board[x][y] == null){
-        return null;
-      }
+    if (round === 0) {
       winner = true;
       startMark = board[x][y];
     }
 
-    if( board[x][y] !== startMark) {
-        winner = false;
+    if (board[x][y] !== startMark) {
+      winner = false;
     }
     round++;
 
@@ -202,10 +199,10 @@ const findWinner = board => {
 
 }
 
-  module.exports = {
-    sumDigits,
-    createRange,
-    getScreentimeAlertList,
-    hexToRGB,
-    findWinner
-  };
+module.exports = {
+  sumDigits,
+  createRange,
+  getScreentimeAlertList,
+  hexToRGB,
+  findWinner
+};
