@@ -155,8 +155,8 @@ let board10 =  [
 
   let board11 =  [
     ["X", "0", "0"], 
-    ["X", "0",  "0"],
-    ["0", "X", "X"]  ]
+    ["0", null,  "0"],
+    ["X", "0", "X"]  ]
 
   let board12 =  [
       [null, null, null], 
