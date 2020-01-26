@@ -145,53 +145,67 @@ const hexToRGB = hexStr => {
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
 
+  const BOARD_SIZE = 3;
+  let startMark = "";
+  let round = 1;
   let winner = false;
-  let round = 0;
-  
-  for(let i = 0; i< 3; i++){
-    console.log("between");
-    round = 0;
-    for (let j = 0; j< 3; j++){
-  
-      checkEntry(i,j);
-  
-    }
-    round = 0;
-    console.log("between")
-    for (let j = 0; j< 3; j++){
-        
-      checkEntry(j,i);
-  
-    }
-    round = 0;
-    console.log("between");
-    for(let j = 0; j<3; j++){
-      checkEntry(j,j);
-    }
 
-    round = 0;
-    console.log("between");
-    for(let j = 0, k = 2; j< 3; j++, k--){
-      checkEntry(j,k);
+
+  for (let i = 0; i < BOARD_SIZE; i++) {
+// for left to right lines
+    round = 1;
+    for (let j = 0; j < 3; j++) {
+      checkEntry(i, j);
     }
+    if(winner) console.log("winner " +startMark);
+
+
+// for top down lines
+    round = 1;
+    for (let j = 0; j < BOARD_SIZE; j++) {
+     checkEntry(j,i);
+    }
+    if(winner) console.log("winner " +startMark);
+
+// for top left to bottom right diagonal
+    round = 1;
+    for (let j = 0; i === 0 && j < BOARD_SIZE; j++) {
+      checkEntry(j, j);
+    }
+    if(winner) console.log("winner " +startMark);
+
+ //   for bottom left to top right diagonal
+        round = 1;
+        for (let j = 0, k = (BOARD_SIZE - 1);
+            i === 0 &&  j < BOARD_SIZE; j++ , k--) {
+          checkEntry(j, k);
+        if(winner) console.log("winner " +startMark);
+      }
   }
-  
+
+
   function checkEntry(x,y){
-  
-      if(round === 0)
-      console.log(x +" " +y);
-      console.log(" ");
-      console.log(x + "        " +y);
-      round++;
-  
+
+    if(round === 1) {
+      winner = true;
+      startMark = board[x][y];
+    }
+
+    if( board[x][y] !== startMark) {
+        winner = false;
+    }
+    round++;
+
   }
+}
 
-};
 
-module.exports = {
-  sumDigits,
-  createRange,
-  getScreentimeAlertList,
-  hexToRGB,
-  findWinner
-};
+
+
+  module.exports = {
+    sumDigits,
+    createRange,
+    getScreentimeAlertList,
+    hexToRGB,
+    findWinner
+  };
