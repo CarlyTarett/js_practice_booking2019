@@ -147,46 +147,48 @@ const findWinner = board => {
 
   const BOARD_SIZE = 3;
   let startMark = "";
-  let round = 1;
+  let round = 0;
   let winner = false;
-
 
   for (let i = 0; i < BOARD_SIZE; i++) {
 // for left to right lines
-    round = 1;
+    round = 0;
     for (let j = 0; j < 3; j++) {
       checkEntry(i, j);
     }
-    if(winner) return startMark;
-
+    if(winner && startMark != null && round === BOARD_SIZE) return startMark;
 
 // for top down lines
-    round = 1;
+    round = 0;
     for (let j = 0; j < BOARD_SIZE; j++) {
      checkEntry(j,i);
     }
-    if(winner) return startMark;
+    if(winner && startMark != null && round === BOARD_SIZE) return startMark;
 
 // for top left to bottom right diagonal
-    round = 1;
+    round = 0;
     for (let j = 0; i === 0 && j < BOARD_SIZE; j++) {
       checkEntry(j, j);
     }
-    if(winner) return startMark;
+    if(winner && startMark != null && round === BOARD_SIZE) return startMark;
 
  //   for bottom left to top right diagonal
-        round = 1;
-        for (let j = 0, k = (BOARD_SIZE - 1);
-            i === 0 &&  j < BOARD_SIZE; j++ , k--) {
+      round = 0;
+        for (let j = 0, k = (BOARD_SIZE - 1); i === 0 &&  j < BOARD_SIZE; j++ , k--) {
           checkEntry(j, k);
-        if(winner) return startMark;
-      }
+
+          if(winner && startMark != null && round === BOARD_SIZE) return startMark;
+        }
   }
 
+  return null;
 
   function checkEntry(x,y){
 
-    if(round === 1) {
+    if(round === 0) {
+      if(board[x][y] == null){
+        return null;
+      }
       winner = true;
       startMark = board[x][y];
     }
@@ -197,10 +199,8 @@ const findWinner = board => {
     round++;
 
   }
+
 }
-
-
-
 
   module.exports = {
     sumDigits,

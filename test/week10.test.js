@@ -157,10 +157,17 @@ let board10 =  [
     ["X", "0", "0"], 
     ["X", "0",  "0"],
     ["0", "X", "X"]  ]
+
+  let board12 =  [
+      [null, null, null], 
+      [null, null, null], 
+      [null, null, null] ]
   test("return null if no player has won", () => {
-  expect(findWinner(board10)).toBe(null);
-  expect(findWinner(board11)).toBe(null);
- 
+ expect(findWinner(board10)).toEqual(null);
+ expect(findWinner(board11)).toBe(null);
+ expect(findWinner(board12)).toBe(null);
+
+
 });
 
 });
