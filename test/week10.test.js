@@ -95,7 +95,72 @@ describe.only("findWinner", () => {
     ["X", null,  "0"],
     ["X", null, "0"]
    ]
+   let board2 =  [
+    ["X", "0", "0"],
+   ["0", null,  "0"],
+    ["X", null, "0"]
+   ]
+   let board3 =  [
+    ["X", "0", "0"],
+   ["0", "0",  "X"],
+    ["X", "0", "0"]
+   ]
   test("find out which if any player has won", () => {
     expect(findWinner(board1)).toBe("X");
+    expect(findWinner(board2)).toBe("0");
+    expect(findWinner(board3)).toBe("0");
+
   });
+
+  let board4 =  [
+    ["X", "X", "X"], ["X", null,  "0"],["X", null, "0"]  ]
+  let board5 =  [
+      ["X", "0", null], ["X", "X", "X"],["X", null, "0"]  ]
+  let board6 =  [
+      ["X", "0", null], ["X", null,  "0"],["X", "X", "X"]  ]
+  test("find out which if any player has won", () => {
+    expect(findWinner(board4)).toBe("X");
+    expect(findWinner(board5)).toBe("X");
+    expect(findWinner(board6)).toBe("X");
+  });
+
+  let board7 =  [
+    ["X", "0", null], 
+    ["X", "X",  "0"],
+    ["0", "0", "X"]  ]
+    test("find out which if any player has won", () => {
+    expect(findWinner(board7)).toBe("X");
+});
+
+let board8 =  [
+  ["X", "0", "0"], 
+  ["X", "0",  "X"],
+  ["0", "X", "X"]  ]
+  test("find out which if any player has won", () => {
+  expect(findWinner(board8)).toBe("0");
+});
+
+let board9 =  [
+  [null, null, null], 
+  ["0", "0",  "X"],
+  ["X", "X", "X"]  ]
+  test("don't class null as a win and miss a genuine win", () => {
+  expect(findWinner(board9)).toBe("X");
+});
+
+let board10 =  [
+  ["X", null, "0"], 
+  ["X", null,  "X"],
+  ["0", null, "X"]  ]
+
+  let board11 =  [
+    ["X", "0", "0"], 
+    ["X", "0",  "0"],
+    ["0", "X", "X"]  ]
+  test("return null if no player has won", () => {
+  expect(findWinner(board10)).toBe(null);
+  expect(findWinner(board11)).toBe(null);
+ 
+});
+
 });

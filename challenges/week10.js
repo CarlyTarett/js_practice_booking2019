@@ -157,7 +157,7 @@ const findWinner = board => {
     for (let j = 0; j < 3; j++) {
       checkEntry(i, j);
     }
-    if(winner) console.log("winner " +startMark);
+    if(winner) return startMark;
 
 
 // for top down lines
@@ -165,21 +165,21 @@ const findWinner = board => {
     for (let j = 0; j < BOARD_SIZE; j++) {
      checkEntry(j,i);
     }
-    if(winner) console.log("winner " +startMark);
+    if(winner) return startMark;
 
 // for top left to bottom right diagonal
     round = 1;
     for (let j = 0; i === 0 && j < BOARD_SIZE; j++) {
       checkEntry(j, j);
     }
-    if(winner) console.log("winner " +startMark);
+    if(winner) return startMark;
 
  //   for bottom left to top right diagonal
         round = 1;
         for (let j = 0, k = (BOARD_SIZE - 1);
             i === 0 &&  j < BOARD_SIZE; j++ , k--) {
           checkEntry(j, k);
-        if(winner) console.log("winner " +startMark);
+        if(winner) return startMark;
       }
   }
 
